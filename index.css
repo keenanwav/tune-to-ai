@@ -1,0 +1,317 @@
+:root {
+  --background-color: #f8f9fa;
+  --surface-color: #ffffff;
+  --primary-color: #0d6efd;
+  --primary-hover-color: #0b5ed7;
+  --text-color: #212529;
+  --text-muted-color: #6c757d;
+  --border-color: #dee2e6;
+  --error-color: #dc3545;
+  --success-color: #198754;
+  --pending-color: #6c757d;
+  --font-family: 'Inter', sans-serif;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+#root {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+#auth-container button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+#auth-container button:hover {
+  background-color: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+}
+
+#auth-container .user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#auth-container .user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#auth-container .user-info span {
+  font-weight: 500;
+}
+#auth-container .user-info button {
+    background-color: transparent;
+    color: var(--text-muted-color);
+    border: 1px solid var(--border-color);
+}
+#auth-container .user-info button:hover {
+    background-color: #f1f3f5;
+    color: var(--text-color);
+}
+
+
+main.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.upload-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.column h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted-color);
+}
+
+.file-label:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: #f8f9fa;
+}
+
+.file-label svg {
+  margin-bottom: 0.5rem;
+}
+
+#file-input {
+  display: none;
+}
+
+.status-indicator {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid;
+  font-weight: 500;
+}
+
+.status-indicator.pending {
+  background-color: #f8f9fa;
+  border-color: var(--border-color);
+  color: var(--pending-color);
+}
+
+.status-indicator.success {
+  background-color: #e6f9f0;
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.input-with-button {
+  position: relative;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: var(--font-family);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.ai-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.ai-button:hover {
+  opacity: 1;
+}
+
+.ai-button.loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+
+.privacy-options {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.privacy-btn {
+  flex-grow: 1;
+  padding: 0.75rem;
+  border: none;
+  background-color: var(--surface-color);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.privacy-btn + .privacy-btn {
+    border-left: 1px solid var(--border-color);
+}
+.privacy-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.actions-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#upload-button {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#upload-button:hover:not(:disabled) {
+  background-color: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+
+#upload-button:disabled {
+  background-color: var(--pending-color);
+  border-color: var(--pending-color);
+  cursor: not-allowed;
+}
+
+#upload-status {
+  margin-top: 1rem;
+  font-weight: 500;
+  min-height: 24px;
+}
+#upload-status a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+#upload-status a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    padding: 1rem;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+  .upload-container {
+    grid-template-columns: 1fr;
+  }
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

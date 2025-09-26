@@ -1,0 +1,5 @@
+{
+  "name": "Tune-to-Tube AI",
+  "description": "Upload an audio file and a GIF to your YouTube channel, with AI-powered assistance for titles and descriptions.",
+  "requestFramePermissions": []
+}

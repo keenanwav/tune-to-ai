@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tune-to-Tube AI</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+  <div id="root">
+    <header>
+      <h1>Tune-to-Tube AI 🎶➡️📺</h1>
+      <div id="auth-container">
+        <button id="auth-button">Sign in with Google</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="disabled">
+      <div id="config-error" class="error-message hidden">
+        <p><strong>Configuration Error:</strong> Required API keys are missing. Please ensure YOUTUBE_CLIENT_ID and YOUTUBE_API_KEY are configured.</p>
+      </div>
+
+      <div class="upload-container">
+        <div class="column">
+          <h2>1. Select Files</h2>
+          <label for="file-input" class="file-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            Upload Audio & GIF
+          </label>
+          <input type="file" id="file-input" multiple accept="audio/*,image/gif">
+          
+          <div id="audio-status" class="status-indicator pending">
+            <span>Audio not selected</span>
+          </div>
+          <div id="gif-status" class="status-indicator pending">
+            <span>GIF not selected</span>
+          </div>
+        </div>
+
+        <div class="column">
+          <h2>2. Add Video Details</h2>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <div class="input-with-button">
+              <input type="text" id="title" placeholder="My Awesome Track">
+              <button id="generate-title-btn" class="ai-button" title="Generate with AI">✨</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <div class="input-with-button">
+              <textarea id="description" rows="4" placeholder="A description of my video..."></textarea>
+              <button id="generate-desc-btn" class="ai-button" title="Generate with AI">✨</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tags">Tags</label>
+            <input type="text" id="tags" placeholder="beats, instrumental, lofi (comma-separated)">
+          </div>
+
+          <div class="form-group">
+            <label>Privacy</label>
+            <div id="privacy-options" class="privacy-options">
+              <button class="privacy-btn active" data-value="public">Public</button>
+              <button class="privacy-btn" data-value="private">Private</button>
+              <button class="privacy-btn" data-value="unlisted">Unlisted</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions-container">
+        <button id="upload-button" disabled>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8-9-5-9 5v10l9 5 9-5Z"/><path d="m21 8-9 5-9-5"/><path d="M12 22V13"/></svg>
+          Create & Upload Video
+        </button>
+        <div id="upload-status"></div>
+      </div>
+    </main>
+  </div>
+  
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^0.7.0"
+      }
+    }
+  </script>
+  <script type="module" src="index.tsx"></script>
+</body>
+</html>
